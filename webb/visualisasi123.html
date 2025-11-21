@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisis Pertumbuhan Rumput Laut</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .images-section {
+            padding: 40px;
+            background: #f8f9fa;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .image-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .image-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .image-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .image-caption {
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+            color: #333;
+            background: linear-gradient(to right, #f8f9fa, #e9ecef);
+        }
+
+        .explanation-section {
+            padding: 40px;
+            background: white;
+        }
+
+        .explanation-title {
+            font-size: 2em;
+            color: #1e3c72;
+            margin-bottom: 20px;
+            border-left: 5px solid #667eea;
+            padding-left: 15px;
+        }
+
+        .explanation-text {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #333;
+            text-align: justify;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border: 1px solid #e9ecef;
+        }
+
+        .explanation-text::first-letter {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+            float: left;
+            margin-right: 5px;
+            line-height: 1;
+        }
+
+        .footer {
+            background: #1e3c72;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .image-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .explanation-text {
+                font-size: 1em;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Analisis Pertumbuhan Rumput Laut</h1>
+            <p>Hubungan Radiasi Surya dan Tingkat Pertumbuhan</p>
+        </div>
+
+        <div class="images-section">
+            <div class="image-grid">
+                <div class="image-card">
+                    <img src="image1.png" alt="Grafik 1 - Sum of growth percentation by radiation category">
+                    <div class="image-caption">Grafik 1: Persentase Pertumbuhan berdasarkan Kategori Radiasi</div>
+                </div>
+
+                <div class="image-card">
+                    <img src="image3.png" alt="Grafik 2 - Sum of growth percentation by growth rate">
+                    <div class="image-caption">Grafik 2: Persentase Pertumbuhan berdasarkan Growth Rate</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="explanation-section">
+            <h2 class="explanation-title">📝 Interpretasi Data</h2>
+            <div class="explanation-text">
+                Ketiga grafik menunjukkan hubungan yang memperlihatkan adanya pola meningkat yang cukup jelas. Semakin tinggi nilai growth_rate, semakin tinggi pula total growth_percentation yang dihasilkan. Meskipun demikian, variasi nilai pada setiap titik growth_rate cukup besar. Hal ini menunjukkan bahwa pada tingkat growth_rate yang sama, nilai growth_percenantion dapat sangat bervariasi. Dengan demikian, hubungan antara kedua variabel bersifat positif namun tidak stabil, dan terdapat indikasi heteroskedastisitas. Secara garis besar, dapat disimpulkan bahwa meskipun data bervariasi dan cenderung tidak stabil, peningkatan atau radiasi surya >600 W/m² dapat mempercepat pertumbuhan rumput laut >20 %. Perlu diperhatikan lebih lanjut bahwa radiasi surya yang terlalu tinggi dapat menyebabkan penurunan kapasitas fotosintesis pada rumput laut, sehingga radiasi cahaya yang ada harus optimal untuk mengefisiensikan pertumbuhan rumput laut.
+            </div>
+        </div>
+
+        <div class="footer">
+            © 2025 Analisis Pertumbuhan Rumput Laut | Data Visualization
+        </div>
+    </div>
+</body>
+</html>

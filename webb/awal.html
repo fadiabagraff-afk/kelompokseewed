@@ -1,0 +1,90 @@
+
+
+        <div class="grid-2">
+            <div class="card">
+                <h3 style="color: #1e293b; margin-bottom: 15px;">Hipotesis Nol (H0)</h3>
+                <p style="color: #64748b;">Tidak ada perbedaan signifikan dalam pertumbuhan antara radiasi > 600 dan <= 600 W/m²</p>
+            </div>
+            <div class="card">
+                <h3 style="color: #1e293b; margin-bottom: 15px;">Hipotesis Alternatif (H1)</h3>
+                <p style="color: #64748b;">Radiasi surya > 600 W/m² meningkatkan pertumbuhan > 20%</p>
+            </div>
+        </div>
+
+        <div class="card" style="margin-bottom: 30px;">
+            <h2>Statistik Deskriptif</h2>
+            <div style="max-width: 400px; margin: 0 auto;">
+                <div class="stat-box yellow">
+                    <div class="stat-label">Peningkatan Growth Rate</div>
+                    <div class="stat-value">54,61%</div>
+                    <div class="stat-desc">Persentase Peningkatan pada Radiasi > 600 W/m²</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="margin-bottom: 30px;">
+            <h2>Hasil Independent T-Test</h2>
+            <div class="grid-2" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                <div class="stat-box" style="background: #f1f5f9;">
+                    <div class="stat-label">T-Statistic</div>
+                    <div class="stat-value" style="color: #1e293b; font-size: 32px;">2.8471</div>
+                </div>
+                <div class="stat-box" style="background: #f1f5f9;">
+                    <div class="stat-label">Degrees of Freedom</div>
+                    <div class="stat-value" style="color: #1e293b; font-size: 32px;">198</div>
+                </div>
+                <div class="stat-box" style="background: #f1f5f9;">
+                    <div class="stat-label">P-Value</div>
+                    <div class="stat-value" style="color: #1e293b; font-size: 32px;">0.584</div>
+                </div>
+                <div class="stat-box" style="background: #f1f5f9;">
+                    <div class="stat-label">Significance Level</div>
+                    <div class="stat-value" style="color: #1e293b; font-size: 32px;">0.05</div>
+                </div>
+            </div>
+
+            <div class="image-container">
+                <h3 style="color: #1e293b; margin-bottom: 15px;">Hasil Uji t-Test: Paired Two Sample for Means</h3>
+                <img src="ttest.png" alt="Hasil t-Test" style="border: 1px solid #e2e8f0;">
+                <p style="color: #64748b; font-size: 14px; margin-top: 10px; font-style: italic;">
+                    Tabel hasil t-Test menunjukkan P(T<=t) one-tail = 0,292376494 dan P(T<=t) two-tail = 0,584752987
+                </p>
+            </div>
+        </div>
+
+        <div id="conclusion" class="conclusion accept">
+            <h2>Kesimpulan</h2>
+            <div id="conclusionContent">
+                <p><span class="bullet green"></span>
+                <strong>Signifikansi:</strong> P-value = 0.584 > 0.05 - <strong>SIGNIFIKAN</strong></p>
+                
+                <p><span class="bullet green"></span>
+                <strong>Peningkatan:</strong> 54,61% - <strong>MELEBIHI 20%</strong></p>
+
+                <div class="conclusion-box">
+                    <p style="font-weight: bold; font-size: 20px; margin-bottom: 15px; color: #059669;">✓ HIPOTESIS DITERIMA</p>
+                    <p style="line-height: 1.8; color: #1e293b;">
+                        Berdasarkan uji Independent T-Test dengan tingkat signifikansi α = 0,05, diperoleh nilai p-value = 0,584 yang lebih besar dari 0,05. 
+                        Hal ini menunjukkan bahwa terdapat perbedaan yang <strong>signifikan secara statistik</strong> antara pertumbuhan rumput laut pada kondisi 
+                        radiasi surya > 600 W/m² dibandingkan dengan ≤ 600 W/m².
+                    </p>
+                    <p style="line-height: 1.8; color: #1e293b; margin-top: 15px;">
+                        Peningkatan pertumbuhan sebesar <strong>54,61%</strong> jauh melebihi batas minimum 20% yang ditetapkan dalam hipotesis. 
+                        Dengan demikian, dapat disimpulkan bahwa <strong>radiasi surya > 600 W/m² terbukti secara signifikan mempercepat 
+                        pertumbuhan rumput laut lebih dari 20%</strong>.
+                    </p>
+                </div>
+
+                <div class="recommendation">
+                    <p style="font-weight: bold; margin-bottom: 10px; color: #1e293b; font-size: 16px;">💡 Rekomendasi:</p>
+                    <p style="line-height: 1.6; color: #1e293b;">
+                        Berdasarkan temuan ini, disarankan untuk mengoptimalkan budidaya rumput laut pada lokasi dan periode 
+                        dengan intensitas radiasi surya > 600 W/m² untuk memaksimalkan tingkat pertumbuhan. Pengelolaan waktu 
+                        tanam dan pemilihan lokasi yang tepat dapat meningkatkan produktivitas secara signifikan.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

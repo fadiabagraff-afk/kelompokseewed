@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validasi Jurnal - Pertumbuhan Rumput Laut</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #134e5e 0%, #71b280 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: wave 15s infinite linear;
+        }
+
+        @keyframes wave {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-family: 'Arial', sans-serif;
+        }
+
+        .header .subtitle {
+            font-size: 1.1em;
+            opacity: 0.95;
+            font-style: italic;
+        }
+
+        .content-section {
+            padding: 50px 40px;
+        }
+
+        .section-title {
+            font-size: 2.2em;
+            color: #134e5e;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: bold;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, #134e5e, #71b280);
+            border-radius: 2px;
+        }
+
+        .research-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-left: 5px solid #71b280;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .research-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .research-title {
+            font-size: 1.3em;
+            color: #134e5e;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .research-title::before {
+            content: '📚';
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+
+        .author {
+            color: #2c5364;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .research-text {
+            font-size: 1.05em;
+            line-height: 1.8;
+            color: #2c3e50;
+            text-align: justify;
+        }
+
+        .conclusion-card {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-left: 5px solid #ff6b6b;
+            padding: 30px;
+            margin-top: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .conclusion-title {
+            font-size: 1.5em;
+            color: #c0392b;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .conclusion-title::before {
+            content: '✓';
+            margin-right: 10px;
+            font-size: 1.3em;
+            background: #c0392b;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .conclusion-text {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #2c3e50;
+            text-align: justify;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        .warning-highlight {
+            background: linear-gradient(120deg, #fa709a 0%, #fee140 100%);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        .reference {
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.5);
+            border-left: 3px solid #134e5e;
+            border-radius: 5px;
+            font-size: 0.9em;
+            line-height: 1.6;
+            color: #2c3e50;
+        }
+
+        .reference a {
+            color: #134e5e;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .reference a:hover {
+            color: #71b280;
+            text-decoration: underline;
+        }
+
+        .footer {
+            background: #134e5e;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+
+        .icon {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .content-section {
+                padding: 30px 20px;
+            }
+
+            .section-title {
+                font-size: 1.8em;
+            }
+
+            .research-text,
+            .conclusion-text {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <h1>🌊 Validasi Jurnal</h1>
+                <p class="subtitle">Analisis Pengaruh Radiasi Cahaya terhadap Pertumbuhan Rumput Laut</p>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">Tinjauan Literatur</h2>
+
+            <div class="research-card">
+                <div class="research-title">
+                    Penelitian 1: Pertumbuhan Optimal
+                </div>
+                <p class="research-text">
+                    Menurut penelitian <span class="author">Songserm et al. (2024)</span> rumput laut dapat tumbuh cepat dengan tingkat pertumbuhan harian <span class="highlight">20–59%</span> di bawah kondisi radiasi cahaya memadai, terutama di daerah tropis dengan intensitas sinar yang tinggi.
+                </p>
+                <div class="reference">
+                    Songserm R, Nishiyama Y, Sanevas N. 2024. Light influences the growth, pigment synthesis, photosynthesis capacity, and antioxidant activities in Scenedesmus falcatus. <em>Scientifica</em>. 2024(1):1-12. doi: <a href="https://doi.org/10.1155/2024/1898624" target="_blank">https://doi.org/10.1155/2024/1898624</a>.
+                </div>
+            </div>
+
+            <div class="research-card">
+                <div class="research-title">
+                    Penelitian 2: Efek Radiasi Berlebih
+                </div>
+                <p class="research-text">
+                    Namun di lain sisi, menurut hasil penelitian <span class="author">Celis-Plá et al. (2021)</span> produktivitas thallus (bagian tubuh rumput laut) meningkat saat terpapar radiasi tinggi, tetapi dapat terjadi <span class="warning-highlight">fotoinhibisi</span> saat kelebihan radiasi tanpa mekanisme fotoproteksi memadai.
+                </p>
+                <div class="reference">
+                    Celis-Plá PS, Kappes JL, Figueroa FL, Pereda SV, Villegas K, Altamirano R, González MCH, Buschmann AH. 2021. Solar radiation as an isolated environmental factor in an experimental mesocosm approach for studying photosynthetic acclimation of Macrocystis pyrifera (Ochrophyta). <em>Frontiers in Plant Science</em>. 12(1):1-15. doi: <a href="https://doi.org/10.3389/fpls.2021.622150" target="_blank">https://doi.org/10.3389/fpls.2021.622150</a>.
+                </div>
+            </div>
+
+            <div class="conclusion-card">
+                <div class="conclusion-title">
+                    Kesimpulan Validasi
+                </div>
+                <p class="conclusion-text">
+                    Dengan demikian, dapat dibenarkan bahwa peningkatan atau radiasi surya <span class="highlight">>600 W/m²</span> dapat mempercepat pertumbuhan rumput laut <span class="highlight">>20%</span>, namun perlu diperhatikan lebih lanjut bahwa <span class="warning-highlight">radiasi surya yang terlalu tinggi dapat menyebabkan penurunan kapasitas fotosintesis</span> pada rumput laut, sehingga radiasi cahaya yang ada harus <strong>optimal</strong> untuk mengefisiensikan pertumbuhan rumput laut.
+                </p>
+            </div>
+        </div>
+
+        <div class="footer">
+            © 2025 Validasi Jurnal Ilmiah | Studi Pertumbuhan Rumput Laut
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisis Radiasi Surya</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: linear-gradient(135deg, #e0f2fe 0%, #dcfce7 100%); min-height: 100vh; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .header { background: white; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); padding: 30px; margin-bottom: 30px; }
+        .header h1 { color: #1e40af; font-size: 28px; margin-bottom: 10px; }
+        .header p { color: #64748b; font-size: 16px; }
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .card { background: white; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); padding: 25px; }
+        .card h2 { color: #1e293b; font-size: 24px; margin-bottom: 20px; }
+        .stat-box { border-radius: 10px; padding: 20px; margin-bottom: 15px; }
+        .stat-box.yellow { background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); }
+        .stat-label { color: #64748b; font-size: 14px; margin-bottom: 8px; }
+        .stat-value { font-size: 48px; font-weight: bold; margin-bottom: 5px; }
+        .stat-box.yellow .stat-value { color: #d97706; }
+        .stat-desc { color: #64748b; font-size: 14px; }
+        .conclusion { border-radius: 15px; padding: 30px; margin-bottom: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .conclusion.accept { background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); border: 3px solid #10b981; }
+        .conclusion h2 { font-size: 24px; margin-bottom: 20px; }
+        .bullet { width: 10px; height: 10px; border-radius: 50%; margin-top: 6px; display: inline-block; margin-right: 10px; }
+        .bullet.green { background: #10b981; }
+        .conclusion-box { margin-top: 20px; padding: 20px; background: rgba(255,255,255,0.6); border-radius: 10px; }
+        .recommendation { background: rgba(255,255,255,0.7); padding: 20px; border-radius: 10px; margin-top: 20px; }
+        .image-container { text-align: center; margin: 20px 0; padding: 20px; background: white; border-radius: 10px; }
+        .image-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .image-placeholder { padding: 100px 20px; background: #f1f5f9; border: 2px dashed #cbd5e1; border-radius: 8px; color: #64748b; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header" 
+    style="
+        background: url('seeweed fix.png') center/cover no-repeat;
+        padding: 70px 40px;
+        border-radius: 15px;
+        margin-bottom: 30px;
+        color: white;
+        text-shadow: 0 3px 6px rgba(0,0,0,0.6);
+        box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+    ">
+    <h1 style="font-size: 32px; color:white;">
+        Analisis Statistik: Pengaruh Radiasi Surya terhadap Pertumbuhan Rumput Laut
+    </h1>
+    <p style="font-size: 18px; color:#f1f5f9;">
+        Uji hipotesis: Apakah radiasi surya > 600 W/m² mempercepat pertumbuhan > 20%?
+    </p>
+</div>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flowchart Analisis Data Rumput Laut</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="%23ffffff"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="%23ffffff"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%23ffffff"/></svg>') no-repeat bottom;
+            background-size: cover;
+            opacity: 0.1;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+
+        .content-section {
+            padding: 50px 40px;
+        }
+
+        .section-title {
+            font-size: 2.5em;
+            color: #1e3c72;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: bold;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 5px;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            border-radius: 3px;
+        }
+
+        .flowchart-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .flowchart-wrapper {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .flowchart-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .flowchart-image:hover {
+            transform: scale(1.02);
+        }
+
+        .description-section {
+            margin-top: 40px;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .description-title {
+            font-size: 1.8em;
+            color: #1e3c72;
+            margin-bottom: 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .description-title::before {
+            content: '📋';
+            margin-right: 15px;
+            font-size: 1.2em;
+        }
+
+        .description-text {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #2c3e50;
+            text-align: justify;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .step-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .step-number {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+
+        .step-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .step-description {
+            font-size: 1em;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .footer {
+            background: #1e3c72;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            font-size: 0.95em;
+        }
+
+        .zoom-controls {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .zoom-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            margin: 0 10px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .zoom-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .zoom-btn:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .content-section {
+                padding: 30px 20px;
+            }
+
+            .section-title {
+                font-size: 1.8em;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <h1>📊 Flowchart Analisis Data</h1>
+                <p>Alur Proses Analisis Pengaruh Radiasi terhadap Pertumbuhan Rumput Laut</p>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">Diagram Alur Proses</h2>
+
+            <div class="flowchart-container">
+                <div class="zoom-controls">
+                    <button class="zoom-btn" onclick="zoomIn()">🔍 Zoom In</button>
+                    <button class="zoom-btn" onclick="zoomOut()">🔍 Zoom Out</button>
+                    <button class="zoom-btn" onclick="resetZoom()">↺ Reset</button>
+                </div>
+
+                <div class="flowchart-wrapper">
+                    <img id="flowchart" src="flowchart.png" alt="Flowchart Analisis Data" class="flowchart-image">
+                </div>
+            </div>
+
+            <div class="description-section">
+                <div class="description-title">
+                    Penjelasan Flowchart
+                </div>
+                <div class="description-text">
+                    Flowchart di atas menggambarkan alur kerja lengkap dari proses analisis data pertumbuhan rumput laut berdasarkan radiasi cahaya. Proses dimulai dengan input data dari berbagai tabel (Lingkungan, Pengukuran, Kebutuhan, Lokasi, dan Nutrien), kemudian dilakukan validasi data untuk memastikan kelengkapan dan validitas. Setelah data valid, dilakukan penggabungan data menggunakan Power Query BI, diikuti dengan perhitungan growth rate dan pengkategorian radiasi. Analisis statistik dilakukan untuk melihat hubungan antara variabel, dan berdasarkan hasil analisis, sistem akan menghasilkan output berupa hipotesis terbukti atau tidak terbukti, yang kemudian divisualisasikan dalam dashboard interaktif.
+                </div>
+
+                <div class="process-steps">
+                    <div class="step-card">
+                        <div class="step-number">1️⃣</div>
+                        <div class="step-title">Input Data</div>
+                        <div class="step-description">Pengumpulan data dari 5 tabel berbeda: Lingkungan, Pengukuran, Kebutuhan, Lokasi, dan Nutrien</div>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-number">2️⃣</div>
+                        <div class="step-title">Validasi Data</div>
+                        <div class="step-description">Pemeriksaan kelengkapan dan validitas data sebelum diproses lebih lanjut</div>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-number">3️⃣</div>
+                        <div class="step-title">Penggabungan Data</div>
+                        <div class="step-description">Integrasi data menggunakan Power Query BI untuk analisis komprehensif</div>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-number">4️⃣</div>
+                        <div class="step-title">Perhitungan & Kategorisasi</div>
+                        <div class="step-description">Menghitung growth rate dan mengkategorikan tingkat radiasi untuk analisis</div>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-number">5️⃣</div>
+                        <div class="step-title">Analisis Statistik</div>
+                        <div class="step-description">Melakukan analisis untuk melihat hubungan radiasi >600 W/m² dengan pertumbuhan >20%</div>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-number">6️⃣</div>
+                        <div class="step-title">Output & Visualisasi</div>
+                        <div class="step-description">Generate hipotesis dan visualisasi dalam dashboard dengan grafik, korelasi, dan tabel summary</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            © 2025 Flowchart Analisis Data Rumput Laut | Sistem Monitoring Pertumbuhan
+        </div>
+    </div>
+
+    <script>
+        let currentZoom = 1;
+
+        function zoomIn() {
+            currentZoom += 0.2;
+            if (currentZoom > 3) currentZoom = 3;
+            applyZoom();
+        }
+
+        function zoomOut() {
+            currentZoom -= 0.2;
+            if (currentZoom < 0.5) currentZoom = 0.5;
+            applyZoom();
+        }
+
+        function resetZoom() {
+            currentZoom = 1;
+            applyZoom();
+        }
+
+        function applyZoom() {
+            const img = document.getElementById('flowchart');
+            img.style.transform = `scale(${currentZoom})`;
+            img.style.transformOrigin = 'center top';
+            img.style.transition = 'transform 0.3s ease';
+        }
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validasi Jurnal - Pertumbuhan Rumput Laut</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #134e5e 0%, #71b280 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: wave 15s infinite linear;
+        }
+
+        @keyframes wave {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-family: 'Arial', sans-serif;
+        }
+
+        .header .subtitle {
+            font-size: 1.1em;
+            opacity: 0.95;
+            font-style: italic;
+        }
+
+        .content-section {
+            padding: 50px 40px;
+        }
+
+        .section-title {
+            font-size: 2.2em;
+            color: #134e5e;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: bold;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, #134e5e, #71b280);
+            border-radius: 2px;
+        }
+
+        .research-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-left: 5px solid #71b280;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .research-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .research-title {
+            font-size: 1.3em;
+            color: #134e5e;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .research-title::before {
+            content: '📚';
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+
+        .author {
+            color: #2c5364;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .research-text {
+            font-size: 1.05em;
+            line-height: 1.8;
+            color: #2c3e50;
+            text-align: justify;
+        }
+
+        .conclusion-card {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-left: 5px solid #ff6b6b;
+            padding: 30px;
+            margin-top: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .conclusion-title {
+            font-size: 1.5em;
+            color: #c0392b;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .conclusion-title::before {
+            content: '✓';
+            margin-right: 10px;
+            font-size: 1.3em;
+            background: #c0392b;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .conclusion-text {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #2c3e50;
+            text-align: justify;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        .warning-highlight {
+            background: linear-gradient(120deg, #fa709a 0%, #fee140 100%);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        .reference {
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.5);
+            border-left: 3px solid #134e5e;
+            border-radius: 5px;
+            font-size: 0.9em;
+            line-height: 1.6;
+            color: #2c3e50;
+        }
+
+        .reference a {
+            color: #134e5e;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .reference a:hover {
+            color: #71b280;
+            text-decoration: underline;
+        }
+
+        .footer {
+            background: #134e5e;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+
+        .icon {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .content-section {
+                padding: 30px 20px;
+            }
+
+            .section-title {
+                font-size: 1.8em;
+            }
+
+            .research-text,
+            .conclusion-text {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <h1>🌊 Validasi Jurnal</h1>
+                <p class="subtitle">Analisis Pengaruh Radiasi Cahaya terhadap Pertumbuhan Rumput Laut</p>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">Tinjauan Literatur</h2>
+
+            <div class="research-card">
+                <div class="research-title">
+                    Penelitian 1: Pertumbuhan Optimal
+                </div>
+                <p class="research-text">
+                    Menurut penelitian <span class="author">Songserm et al. (2024)</span> rumput laut dapat tumbuh cepat dengan tingkat pertumbuhan harian <span class="highlight">20–59%</span> di bawah kondisi radiasi cahaya memadai, terutama di daerah tropis dengan intensitas sinar yang tinggi.
+                </p>
+                <div class="reference">
+                    Songserm R, Nishiyama Y, Sanevas N. 2024. Light influences the growth, pigment synthesis, photosynthesis capacity, and antioxidant activities in Scenedesmus falcatus. <em>Scientifica</em>. 2024(1):1-12. doi: <a href="https://doi.org/10.1155/2024/1898624" target="_blank">https://doi.org/10.1155/2024/1898624</a>.
+                </div>
+            </div>
+
+            <div class="research-card">
+                <div class="research-title">
+                    Penelitian 2: Efek Radiasi Berlebih
+                </div>
+                <p class="research-text">
+                    Namun di lain sisi, menurut hasil penelitian <span class="author">Celis-Plá et al. (2021)</span> produktivitas thallus (bagian tubuh rumput laut) meningkat saat terpapar radiasi tinggi, tetapi dapat terjadi <span class="warning-highlight">fotoinhibisi</span> saat kelebihan radiasi tanpa mekanisme fotoproteksi memadai.
+                </p>
+                <div class="reference">
+                    Celis-Plá PS, Kappes JL, Figueroa FL, Pereda SV, Villegas K, Altamirano R, González MCH, Buschmann AH. 2021. Solar radiation as an isolated environmental factor in an experimental mesocosm approach for studying photosynthetic acclimation of Macrocystis pyrifera (Ochrophyta). <em>Frontiers in Plant Science</em>. 12(1):1-15. doi: <a href="https://doi.org/10.3389/fpls.2021.622150" target="_blank">https://doi.org/10.3389/fpls.2021.622150</a>.
+                </div>
+            </div>
+
+            <div class="conclusion-card">
+                <div class="conclusion-title">
+                    Kesimpulan Validasi
+                </div>
+                <p class="conclusion-text">
+                    Dengan demikian, dapat dibenarkan bahwa peningkatan atau radiasi surya <span class="highlight">>600 W/m²</span> dapat mempercepat pertumbuhan rumput laut <span class="highlight">>20%</span>, namun perlu diperhatikan lebih lanjut bahwa <span class="warning-highlight">radiasi surya yang terlalu tinggi dapat menyebabkan penurunan kapasitas fotosintesis</span> pada rumput laut, sehingga radiasi cahaya yang ada harus <strong>optimal</strong> untuk mengefisiensikan pertumbuhan rumput laut.
+                </p>
+            </div>
+        </div>
+
+        <div class="footer">
+            © 2025 Validasi Jurnal Ilmiah | Studi Pertumbuhan Rumput Laut
+        </div>
+    </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisis Pertumbuhan Rumput Laut</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .images-section {
+            padding: 40px;
+            background: #f8f9fa;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .image-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .image-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .image-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .image-caption {
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+            color: #333;
+            background: linear-gradient(to right, #f8f9fa, #e9ecef);
+        }
+
+        .explanation-section {
+            padding: 40px;
+            background: white;
+        }
+
+        .explanation-title {
+            font-size: 2em;
+            color: #1e3c72;
+            margin-bottom: 20px;
+            border-left: 5px solid #667eea;
+            padding-left: 15px;
+        }
+
+        .explanation-text {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #333;
+            text-align: justify;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border: 1px solid #e9ecef;
+        }
+
+        .explanation-text::first-letter {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+            float: left;
+            margin-right: 5px;
+            line-height: 1;
+        }
+
+        .footer {
+            background: #1e3c72;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .image-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .explanation-text {
+                font-size: 1em;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Analisis Pertumbuhan Rumput Laut</h1>
+            <p>Hubungan Radiasi Surya dan Tingkat Pertumbuhan</p>
+        </div>
+
+        <div class="images-section">
+            <div class="image-grid">
+                <div class="image-card">
+                    <img src="image1.png" alt="Grafik 1 - Sum of growth percentation by radiation category">
+                    <div class="image-caption">Grafik 1: Persentase Pertumbuhan berdasarkan Kategori Radiasi</div>
+                </div>
+                <div class="image-card">
+                    <img src="image3.png" alt="Grafik 2 - Sum of growth percentation by growth rate">
+                    <div class="image-caption">Grafik 2: Persentase Pertumbuhan berdasarkan Growth Rate</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="explanation-section">
+            <h2 class="explanation-title">📝 Interpretasi Data</h2>
+            <div class="explanation-text">
+                Kedua grafik menunjukkan hubungan yang memperlihatkan adanya pola meningkat yang cukup jelas. Semakin tinggi nilai growth_rate, semakin tinggi pula total growth_percentation yang dihasilkan. Meskipun demikian, variasi nilai pada setiap titik growth_rate cukup besar. Hal ini menunjukkan bahwa pada tingkat growth_rate yang sama, nilai growth_percenantion dapat sangat bervariasi. Dengan demikian, hubungan antara kedua variabel bersifat positif namun tidak stabil, dan terdapat indikasi heteroskedastisitas. Secara garis besar, dapat disimpulkan bahwa meskipun data bervariasi dan cenderung tidak stabil, peningkatan atau radiasi surya >600 W/m² dapat mempercepat pertumbuhan rumput laut >20 %. Perlu diperhatikan lebih lanjut bahwa radiasi surya yang terlalu tinggi dapat menyebabkan penurunan kapasitas fotosintesis pada rumput laut, sehingga radiasi cahaya yang ada harus optimal untuk mengefisiensikan pertumbuhan rumput laut.
+            </div>
+        </div>
+
+        <div class="footer">
+            © 2025 Analisis Pertumbuhan Rumput Laut | Data Visualization
+        </div>
+    </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisis Radiasi Surya</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: linear-gradient(135deg, #e0f2fe 0%, #dcfce7 100%); min-height: 100vh; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .header { background: white; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); padding: 30px; margin-bottom: 30px; }
+        .header h1 { color: #1e40af; font-size: 28px; margin-bottom: 10px; }
+        .header p { color: #64748b; font-size: 16px; }
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .card { background: white; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); padding: 25px; }
+        .card h2 { color: #1e293b; font-size: 24px; margin-bottom: 20px; }
+        .stat-box { border-radius: 10px; padding: 20px; margin-bottom: 15px; }
+        .stat-box.yellow { background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); }
+        .stat-label { color: #64748b; font-size: 14px; margin-bottom: 8px; }
+        .stat-value { font-size: 48px; font-weight: bold; margin-bottom: 5px; }
+        .stat-box.yellow .stat-value { color: #d97706; }
+        .stat-desc { color: #64748b; font-size: 14px; }
+        .conclusion { border-radius: 15px; padding: 30px; margin-bottom: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .conclusion.accept { background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); border: 3px solid #10b981; }
+        .conclusion h2 { font-size: 24px; margin-bottom: 20px; }
+        .bullet { width: 10px; height: 10px; border-radius: 50%; margin-top: 6px; display: inline-block; margin-right: 10px; }
+        .bullet.green { background: #10b981; }
+        .conclusion-box { margin-top: 20px; padding: 20px; background: rgba(255,255,255,0.6); border-radius: 10px; }
+        .recommendation { background: rgba(255,255,255,0.7); padding: 20px; border-radius: 10px; margin-top: 20px; }
+        .image-container { text-align: center; margin: 20px 0; padding: 20px; background: white; border-radius: 10px; }
+        .image-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .image-placeholder { padding: 100px 20px; background: #f1f5f9; border: 2px dashed #cbd5e1; border-radius: 8px; color: #64748b; font-size: 16px; }
+    </style>
+</head>
+<source><body>
+    <div class="container">
+        <div class="header">
+            <h1>Analisis Statistik: Pengaruh Radiasi Surya terhadap Pertumbuhan Rumput Laut</h1>
+            <p>Uji hipotesis: Apakah radiasi surya > 600 W/m² mempercepat pertumbuhan > 20%?</p>
+        </div>
+
+        <div class="grid-2">
+            <div class="card">
+                <h3 style="color: #1e293b; margin-bottom: 15px;">Hipotesis Nol (H0)</h3>
+                <p style="color: #64748b;">Tidak ada perbedaan signifikan dalam pertumbuhan antara radiasi > 600 dan <= 600 W/m²</p>
+            </div>
+            <div class="card">
+                <h3 style="color: #1e293b; margin-bottom: 15px;">Hipotesis Alternatif (H1)</h3>
+                <p style="color: #64748b;">Radiasi surya > 600 W/m² meningkatkan pertumbuhan > 20%</p>
+            </div>
+        </div>
+
+        <div class="card" style="margin-bottom: 30px;">
+            <h2>Statistik Deskriptif</h2>
+            <div style="max-width: 400px; margin: 0 auto;">
+                <div class="stat-box yellow">
+                    <div class="stat-label">Peningkatan Growth Rate</div>
+                    <div class="stat-value">54,61%</div>
+                    <div class="stat-desc">Persentase Peningkatan pada Radiasi > 600 W/m²</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="margin-bottom: 30px;">
+            <h2>Hasil Independent T-Test</h2>
+            <div class="grid-2" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                <div class="stat-box" style="background: #f1f5f9;">
+                    <div class="stat-label">T-Statistic</div>
+                    <div class="stat-value" style="color: #1e293b; font-size: 32px;">2.8471</div>
+                </div>
+                <div class="stat-box" style="background: #f1f5f9;">
+                    <div class="stat-label">Degrees of Freedom</div>
+                    <div class="stat-value" style="color: #1e293b; font-size: 32px;">198</div>
+                </div>
+                <div class="stat-box" style="background: #f1f5f9;">
+                    <div class="stat-label">P-Value</div>
+                    <div class="stat-value" style="color: #1e293b; font-size: 32px;">0.584</div>
+                </div>
+                <div class="stat-box" style="background: #f1f5f9;">
+                    <div class="stat-label">Significance Level</div>
+                    <div class="stat-value" style="color: #1e293b; font-size: 32px;">0.05</div>
+                </div>
+            </div>
+
+            <div class="image-container">
+                <h3 style="color: #1e293b; margin-bottom: 15px;">Hasil Uji t-Test: Paired Two Sample for Means</h3>
+                <img src="ttest.png" alt="Hasil t-Test" style="border: 1px solid #e2e8f0;">
+                <p style="color: #64748b; font-size: 14px; margin-top: 10px; font-style: italic;">
+                    Tabel hasil t-Test menunjukkan P(T<=t) one-tail = 0,292376494 dan P(T<=t) two-tail = 0,584752987
+                </p>
+            </div>
+        </div>
+
+        <div id="conclusion" class="conclusion accept">
+            <h2>Kesimpulan</h2>
+            <div id="conclusionContent">
+                <p><span class="bullet green"></span>
+                <strong>Signifikansi:</strong> P-value = 0.584 > 0.05 - <strong>SIGNIFIKAN</strong></p>
+                
+                <p><span class="bullet green"></span>
+                <strong>Peningkatan:</strong> 54,61% - <strong>MELEBIHI 20%</strong></p>
+
+                <div class="conclusion-box">
+                    <p style="font-weight: bold; font-size: 20px; margin-bottom: 15px; color: #059669;">✓ HIPOTESIS DITERIMA</p>
+                    <p style="line-height: 1.8; color: #1e293b;">
+                        Berdasarkan uji Independent T-Test dengan tingkat signifikansi α = 0,05, diperoleh nilai p-value = 0,584 yang lebih besar dari 0,05. 
+                        Hal ini menunjukkan bahwa terdapat perbedaan yang <strong>signifikan secara statistik</strong> antara pertumbuhan rumput laut pada kondisi 
+                        radiasi surya > 600 W/m² dibandingkan dengan ≤ 600 W/m².
+                    </p>
+                    <p style="line-height: 1.8; color: #1e293b; margin-top: 15px;">
+                        Peningkatan pertumbuhan sebesar <strong>54,61%</strong> jauh melebihi batas minimum 20% yang ditetapkan dalam hipotesis. 
+                        Dengan demikian, dapat disimpulkan bahwa <strong>radiasi surya > 600 W/m² terbukti secara signifikan mempercepat 
+                        pertumbuhan rumput laut lebih dari 20%</strong>.
+                    </p>
+                </div>
+
+                <div class="recommendation">
+                    <p style="font-weight: bold; margin-bottom: 10px; color: #1e293b; font-size: 16px;">💡 Rekomendasi:</p>
+                    <p style="line-height: 1.6; color: #1e293b;">
+                        Berdasarkan temuan ini, disarankan untuk mengoptimalkan budidaya rumput laut pada lokasi dan periode 
+                        dengan intensitas radiasi surya > 600 W/m² untuk memaksimalkan tingkat pertumbuhan. Pengelolaan waktu 
+                        tanam dan pemilihan lokasi yang tepat dapat meningkatkan produktivitas secara signifikan.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

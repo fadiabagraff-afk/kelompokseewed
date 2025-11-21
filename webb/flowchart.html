@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flowchart Analisis Data Rumput Laut</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="%23ffffff"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="%23ffffff"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%23ffffff"/></svg>') no-repeat bottom;
+            background-size: cover;
+            opacity: 0.1;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+
+        .content-section {
+            padding: 50px 40px;
+        }
+
+        .section-title {
+            font-size: 2.5em;
+            color: #1e3c72;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: bold;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 5px;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            border-radius: 3px;
+        }
+
+        .flowchart-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .flowchart-wrapper {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .flowchart-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .flowchart-image:hover {
+            transform: scale(1.02);
+        }
+
+        .description-section {
+            margin-top: 40px;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .description-title {
+            font-size: 1.8em;
+            color: #1e3c72;
+            margin-bottom: 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .description-title::before {
+            content: '📋';
+            margin-right: 15px;
+            font-size: 1.2em;
+        }
+
+        .description-text {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #2c3e50;
+            text-align: justify;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .step-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .step-number {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+
+        .step-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .step-description {
+            font-size: 1em;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .footer {
+            background: #1e3c72;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            font-size: 0.95em;
+        }
+
+        .zoom-controls {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .zoom-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            margin: 0 10px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .zoom-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .zoom-btn:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .content-section {
+                padding: 30px 20px;
+            }
+
+            .section-title {
+                font-size: 1.8em;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <h1>📊 Flowchart Analisis Data</h1>
+                <p>Alur Proses Analisis Pengaruh Radiasi terhadap Pertumbuhan Rumput Laut</p>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">Diagram Alur Proses</h2>
+
+            <div class="flowchart-container">
+                <div class="zoom-controls">
+                    <button class="zoom-btn" onclick="zoomIn()">🔍 Zoom In</button>
+                    <button class="zoom-btn" onclick="zoomOut()">🔍 Zoom Out</button>
+                    <button class="zoom-btn" onclick="resetZoom()">↺ Reset</button>
+                </div>
+
+                <div class="flowchart-wrapper">
+                    <img id="flowchart" src="flowchart.png" alt="Flowchart Analisis Data" class="flowchart-image">
+                </div>
+            </div>
+
+            <div class="description-section">
+                <div class="description-title">
+                    Penjelasan Flowchart
+                </div>
+                <div class="description-text">
+                    Flowchart di atas menggambarkan alur kerja lengkap dari proses analisis data pertumbuhan rumput laut berdasarkan radiasi cahaya. Proses dimulai dengan input data dari berbagai tabel (Lingkungan, Pengukuran, Kebutuhan, Lokasi, dan Nutrien), kemudian dilakukan validasi data untuk memastikan kelengkapan dan validitas. Setelah data valid, dilakukan penggabungan data menggunakan Power Query BI, diikuti dengan perhitungan growth rate dan pengkategorian radiasi. Analisis statistik dilakukan untuk melihat hubungan antara variabel, dan berdasarkan hasil analisis, sistem akan menghasilkan output berupa hipotesis terbukti atau tidak terbukti, yang kemudian divisualisasikan dalam dashboard interaktif.
+                </div>
+
+                <div class="process-steps">
+                    <div class="step-card">
+                        <div class="step-number">1️⃣</div>
+                        <div class="step-title">Input Data</div>
+                        <div class="step-description">Pengumpulan data dari 5 tabel berbeda: Lingkungan, Pengukuran, Kebutuhan, Lokasi, dan Nutrien</div>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-number">2️⃣</div>
+                        <div class="step-title">Validasi Data</div>
+                        <div class="step-description">Pemeriksaan kelengkapan dan validitas data sebelum diproses lebih lanjut</div>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-number">3️⃣</div>
+                        <div class="step-title">Penggabungan Data</div>
+                        <div class="step-description">Integrasi data menggunakan Power Query BI untuk analisis komprehensif</div>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-number">4️⃣</div>
+                        <div class="step-title">Perhitungan & Kategorisasi</div>
+                        <div class="step-description">Menghitung growth rate dan mengkategorikan tingkat radiasi untuk analisis</div>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-number">5️⃣</div>
+                        <div class="step-title">Analisis Statistik</div>
+                        <div class="step-description">Melakukan analisis untuk melihat hubungan radiasi >600 W/m² dengan pertumbuhan >20%</div>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-number">6️⃣</div>
+                        <div class="step-title">Output & Visualisasi</div>
+                        <div class="step-description">Generate hipotesis dan visualisasi dalam dashboard dengan grafik, korelasi, dan tabel summary</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            © 2025 Flowchart Analisis Data Rumput Laut | Sistem Monitoring Pertumbuhan
+        </div>
+    </div>
+
+    <script>
+        let currentZoom = 1;
+
+        function zoomIn() {
+            currentZoom += 0.2;
+            if (currentZoom > 3) currentZoom = 3;
+            applyZoom();
+        }
+
+        function zoomOut() {
+            currentZoom -= 0.2;
+            if (currentZoom < 0.5) currentZoom = 0.5;
+            applyZoom();
+        }
+
+        function resetZoom() {
+            currentZoom = 1;
+            applyZoom();
+        }
+
+        function applyZoom() {
+            const img = document.getElementById('flowchart');
+            img.style.transform = `scale(${currentZoom})`;
+            img.style.transformOrigin = 'center top';
+            img.style.transition = 'transform 0.3s ease';
+        }
+    </script>
+</body>
+</html>
